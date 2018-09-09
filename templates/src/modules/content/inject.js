@@ -1,0 +1,8 @@
+const div = document.createElement('div')
+div.setAttribute('id', 'chrome-root')
+document.body.appendChild(div)
+const content = chrome.extension.getURL('js/content.js')
+const script = document.createElement('script')
+script.setAttribute('type', 'text/javascript')
+script.setAttribute('src', content)
+document.body.appendChild(script)

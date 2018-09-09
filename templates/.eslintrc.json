@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb",
+  "rules": {
+    "no-console": 0,
+    "semi": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": false }],
+    "react/jsx-one-expression-per-line": [0, { "allow": "none" }]
+  }
+}

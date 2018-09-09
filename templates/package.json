@@ -1,0 +1,20 @@
+{
+  "name": "react-chrome-extension",
+  "version": "1.0.0",
+  "description": "react-chrome-extension",
+  "scripts": {
+    "start": "bigroom dev",
+    "build": "bigroom build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0"
+  },
+  "template": {
+    "type": "chrome-extension",
+    "framework": "react"
+  }
+}

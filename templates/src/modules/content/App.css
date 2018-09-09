@@ -1,0 +1,12 @@
+.container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 200px;
+  margin-left: -200px;
+  margin-top: -100px;
+  font-size: 18px;
+  text-align: center;
+  background: lightblue;
+}
