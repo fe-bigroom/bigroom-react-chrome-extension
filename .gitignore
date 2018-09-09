@@ -1,0 +1,13 @@
+scripts/node_modules
+templates/node_modules
+
+scripts/package-lock.json
+templates/package-lock.json
+
+scripts/npm-debug.log*
+scripts/yarn-debug.log*
+scripts/yarn-error.log*
+
+templates/npm-debug.log*
+templates/yarn-debug.log*
+templates/yarn-error.log*
