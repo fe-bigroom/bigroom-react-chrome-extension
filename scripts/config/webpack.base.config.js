@@ -1,17 +1,19 @@
 const path = require('path')
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
 
 const entrys = require('./utils/entrys')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+const resolve = function (dir) {
+  return path.join(process.cwd(), './', dir)
 }
 
 module.exports = {
   entry: entrys,
   resolve: {
     extensions: ['.js', '.json', '.jsx'],
+    alias: {
+      '@': resolve('src')
+    }
   },
   module: {
     rules: [
@@ -38,16 +40,11 @@ module.exports = {
       },
 
       {
-        test: /\.css$/,
+        test: /\.(less|css)$/,
         use: [
           'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [autoprefixer]
-            }
-          }
+          'css-loader',
+          'less-loader'
         ]
       }
     ]

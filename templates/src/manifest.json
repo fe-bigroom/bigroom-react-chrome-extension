@@ -20,5 +20,5 @@
     }
   ],
   "permissions": ["http://*/*", "https://*/*"],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "content_security_policy": "default-src 'self'; script-src 'self' http://127.0.0.1:3000 http://localhost:3000 'unsafe-eval'; connect-src http://127.0.0.1:7001 http://localhost:7001; style-src * 'unsafe-inline' 'self' blob:; img-src 'self' data:;"
 }
