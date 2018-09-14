@@ -44,6 +44,7 @@ const backgroundjs = {
         this.listenPopup(...params);
       }
     });
+    return this;
   },
 
   run() {
@@ -51,4 +52,4 @@ const backgroundjs = {
   },
 };
 
-backgroundjs.listen();
+backgroundjs.listen().run();

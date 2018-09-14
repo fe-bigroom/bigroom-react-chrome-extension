@@ -8,6 +8,8 @@ const resolve = function (dir) {
   return path.join(process.cwd(), './', dir)
 }
 
+const distDir = process.env.ENV_NODE === 'production' ? 'prod' : 'dev'
+
 module.exports = {
   entry: entrys,
   resolve: {
@@ -61,9 +63,13 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: './src/modules/content/inject.js',
-        to: resolve(`dist/${process.env.ENV_NODE === 'production' ? 'prod' : 'dev'}/modules/content/inject.js`),
+        to: resolve(`dist/${distDir}/modules/content/inject.js`),
         toType: 'file'
       },
+      {
+        from: './src/${distDir}/manifest.json',
+        to: resolve(`dist/${distDir}/manifest.json`)
+      }
     ]),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

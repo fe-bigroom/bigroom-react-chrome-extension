@@ -5,7 +5,7 @@ import './App.less';
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="chrome-content-container">
         react chrome extensions
       </div>
     );
