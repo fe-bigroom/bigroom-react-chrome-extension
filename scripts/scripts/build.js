@@ -14,6 +14,7 @@ rm(path.resolve(__dirname, '../dist/prod'), err => {
   if (err) throw err
 
   taskRun('prod')
+
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
 

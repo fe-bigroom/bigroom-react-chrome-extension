@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const entrys = require('./utils/entrys')
 
@@ -50,6 +51,20 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.ENV_NODE || 'development'),
+        PORT: JSON.stringify(process.env.PORT || 3000),
+        PUBLIC_PATH: JSON.stringify(process.env.PUBLIC_PATH || 'js/')
+      }
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: './src/modules/content/inject.js',
+        to: resolve(`dist/${process.env.ENV_NODE === 'production' ? 'prod' : 'dev'}/modules/content/inject.js`),
+        toType: 'file'
+      },
+    ]),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()

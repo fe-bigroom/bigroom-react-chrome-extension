@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import styles from './App.css';
+
+import './App.less';
 
 class App extends Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className="container">
         react chrome extensions
       </div>
     );

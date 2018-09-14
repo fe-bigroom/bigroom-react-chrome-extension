@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
@@ -12,11 +11,6 @@ module.exports = webpackMerge(baseWebpackConfig, {
   },
   mode: 'production',
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
   ],
   optimization: {
     minimizer: [

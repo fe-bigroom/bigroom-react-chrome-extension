@@ -3,35 +3,30 @@ const fs = require('fs')
 const fse = require('fs-extra')
 const klawSync = require('klaw-sync')
 
-const injectContent = require('./inject_content')
 const { host, port, publicPath } = require('../config')
 
 module.exports = function taskRun(env) {
   // copy chrome resources to dist/dev
   const chromeSrc = path.resolve('./src')
   const devDist = path.resolve(`./dist/${env}`)
-  const modulePath = path.resolve('./src/modules')
-  const injectPath = path.resolve('./src/modules/content/inject.js')
+  const manifestPath = path.resolve('./src/manifest.json')
+  const assetsPath = path.resolve('./src/assets')
+  const pagesPath = path.resolve('./src/pages')
 
   fse.copySync(chromeSrc, devDist, {
     filter: (src) => {
-      if (src === injectPath || fs.statSync(src).isDirectory()) {
-        return true
-      }
-      return src.indexOf(modulePath) === -1
+      return (
+        chromeSrc === src ||
+        src.indexOf(pagesPath) !== -1 ||
+        src.indexOf(assetsPath) !== -1 ||
+        src === manifestPath
+      );
     }
   })
 
   // replace
   const pagesDir = path.resolve(`./dist/${env}/pages`)
   replaceJsFiles(env, pagesDir)
-
-  // inject content
-  const injectJsPaths = [
-    path.resolve('./src/modules/content/inject.js'),
-    path.resolve(`./dist/${env}/modules/content/inject.js`)
-  ]
-  injectContent(injectJsPaths)
 }
 
 function replaceJsFiles(env, tpl) {
