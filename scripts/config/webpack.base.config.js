@@ -8,7 +8,7 @@ const resolve = function (dir) {
   return path.join(process.cwd(), './', dir)
 }
 
-const distDir = process.env.ENV_NODE === 'production' ? 'prod' : 'dev'
+const distDir = process.env.NODE_ENV === 'production' ? 'prod' : 'dev'
 
 module.exports = {
   entry: entrys,
@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.ENV_NODE || 'development'),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
         PORT: JSON.stringify(process.env.PORT || 3000),
         PUBLIC_PATH: JSON.stringify(process.env.PUBLIC_PATH || 'js/')
       }
