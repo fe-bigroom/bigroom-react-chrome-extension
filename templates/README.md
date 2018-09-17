@@ -47,8 +47,8 @@ npm build
 
   由于 manifest.json 中的脚本配置不能使用远程 url，只能使用本地的相对地址，所以我们 background + popup 可以使用 html 作为中间层来加载开发模式下的 webpack 的远程 url 进行开发。
 
-	但对于 content 我们则使用一个中间注入脚本 inject.js 作为中间层来帮助我们实现两个功能：动态生成 script 标签完成页面脚本的注入，以及与 background.js 的数据通信。
+  但对于 content 我们则使用一个中间注入脚本 inject.js 作为中间层来帮助我们实现两个功能：动态生成 script 标签完成页面脚本的注入，以及与 background.js 的数据通信。
 
 2. 建议：
 
-	popup、background、content(inject)之间的通信建议以 background 作为中间传递层，防止维护混乱问题。
+  popup、background、content(inject)之间的通信建议以 background 作为中间传递层，防止维护混乱问题。
