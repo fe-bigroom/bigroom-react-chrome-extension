@@ -1,2 +1,2 @@
-scripts/**/*.js
-config/**/*.js
+dist/
+node_modules/

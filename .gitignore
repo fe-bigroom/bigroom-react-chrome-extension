@@ -11,5 +11,3 @@ scripts/yarn-error.log*
 templates/npm-debug.log*
 templates/yarn-debug.log*
 templates/yarn-error.log*
-
-todo.md
