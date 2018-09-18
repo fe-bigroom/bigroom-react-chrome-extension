@@ -10,7 +10,7 @@ const webpackConfig = require('../config/webpack.prod.config')
 const spinner = ora('building for production...\n')
 spinner.start()
 
-rm(path.resolve(__dirname, '../dist/prod'), err => {
+rm(path.resolve(process.cwd(), './dist/prod'), err => {
   if (err) throw err
 
   taskRun('prod')

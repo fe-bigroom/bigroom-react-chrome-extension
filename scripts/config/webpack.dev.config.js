@@ -2,7 +2,6 @@ const path = require('path')
 const webpackMerge = require('webpack-merge')
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
-
 const { publicPath } = require('../config')
 const baseWebpackConfig = require('./webpack.base.config')
 
@@ -21,7 +20,10 @@ module.exports = webpackMerge(baseWebpackConfig, {
   mode: 'development',
   plugins: [
     new WriteFilePlugin({
-      test: /inject\.js$/,
-    })
+      test: /(inject\.js|manifest\.json)$/,
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 })

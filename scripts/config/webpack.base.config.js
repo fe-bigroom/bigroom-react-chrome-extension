@@ -3,12 +3,13 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const entrys = require('./utils/entrys')
+const config = require('./index')
 
 const resolve = function (dir) {
   return path.join(process.cwd(), './', dir)
 }
 
-const distDir = process.env.NODE_ENV === 'production' ? 'prod' : 'dev'
+const env = config.env === 'production' ? 'prod' : 'dev'
 
 module.exports = {
   entry: entrys,
@@ -55,24 +56,22 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
-        PORT: JSON.stringify(process.env.PORT || 3000),
-        PUBLIC_PATH: JSON.stringify(process.env.PUBLIC_PATH || 'js/')
+        NODE_ENV: JSON.stringify(config.env),
+        PORT: JSON.stringify(config.port),
+        PUBLIC_PATH: JSON.stringify(config.publicPath)
       }
     }),
     new CopyWebpackPlugin([
       {
         from: './src/modules/content/inject.js',
-        to: resolve(`dist/${distDir}/modules/content/inject.js`),
+        to: resolve(`dist/${env}/modules/content/inject.js`),
         toType: 'file'
       },
       {
-        from: './src/${distDir}/manifest.json',
-        to: resolve(`dist/${distDir}/manifest.json`)
+        from: `./src/manifest.${env}.json`,
+        to: resolve(`dist/${env}/manifest.json`),
+        toType: 'file'
       }
-    ]),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    ])
   ]
 }

@@ -1,4 +1,5 @@
 const klawSync = require('klaw-sync')
+const config = require('../index')
 
 module.exports = function entrys() {
   const entrys = {};
@@ -10,7 +11,7 @@ module.exports = function entrys() {
     paths.forEach((entry) => {
       const file = entry.path.match(/([^/]+)$/)
       if (file) {
-        entrys[file[1]] = [hotScript, `${entry.path}/${file[1]}.js`]
+        entrys[file[1]] = (config.env !== 'production' ? [hotScript, `${entry.path}/${file[1]}.js`] : `${entry.path}/${file[1]}.js`)
       }
     })
 

@@ -1,5 +1,6 @@
 module.exports = {
   host: 'localhost',
-  port: 3000,
-  publicPath: 'js/'
+  env: process.env.NODE_ENV || 'development',
+  port: process.env.PORT || 3000,
+  publicPath: process.env.PUBLIC_PATH || 'js/'
 }
