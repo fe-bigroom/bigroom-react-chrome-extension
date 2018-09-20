@@ -3,7 +3,7 @@ const fs = require('fs')
 const fse = require('fs-extra')
 const klawSync = require('klaw-sync')
 
-const { host, port, publicPath } = require('../config')
+const { host, port } = require('../config')
 
 module.exports = function taskRun(env) {
   // copy chrome resources to dist/dev
@@ -49,9 +49,9 @@ function replaceJsFiles(env, tpl) {
         let fileUrl = ''
 
         if (env === 'dev') {
-          fileUrl = `http://${host}:${port}/${publicPath}${fileName}.bundle.js` // todo 这里应当为 https
+          fileUrl = `http://${host}:${port}/${fileName}/${fileName}.js` // todo 这里应当为 https
         } else {
-          fileUrl = `../modules/${fileName}/${fileName}.bundle.js`
+          fileUrl = `../modules/${fileName}/${fileName}.js`
           fse.removeSync(`./dist/${env}/modules/${fileName}/${fileName}.js`)
         }
 

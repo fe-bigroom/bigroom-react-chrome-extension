@@ -10,18 +10,15 @@
   },
   "background": {
     "persistent": false,
-    "page": "pages/background.html"
+    "scripts": ["modules/vendor/vendor.js", "modules/background/background.js"]
   },
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["modules/content/inject.js"],
+      "js": ["modules/vendor/vendor.js", "modules/content/content.js"],
       "all_frames": true
     }
   ],
   "permissions": ["http://*/*", "https://*/*"],
-  "web_accessible_resources": [
-    "modules/content/content.bundle.js"
-  ],
   "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

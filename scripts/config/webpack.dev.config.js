@@ -3,14 +3,12 @@ const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
-const { publicPath } = require('../config')
 const baseWebpackConfig = require('./webpack.base.config')
 
 module.exports = webpackMerge(baseWebpackConfig, {
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(process.cwd(), 'dist'),
-    publicPath: `/${publicPath}`
+    filename: '[name]/[name].js',
+    path: path.resolve(process.cwd(), 'dist/dev/modules'),
   },
   devServer: {
     contentBase: './dist/dev',
@@ -21,7 +19,7 @@ module.exports = webpackMerge(baseWebpackConfig, {
   mode: 'development',
   plugins: [
     new WriteFilePlugin({
-      test: /(inject\.js|manifest\.json)$/,
+      test: /(background\.js|vendor\.js|content\.js|manifest\.json)$/,
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),

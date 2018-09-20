@@ -13,16 +13,14 @@
   |       |-- constants                // 常量
   |   |-- modules                      // 插件模块
   |       |-- background               // background 脚本文件集
-  |           |-- App.js               // background 脚本入口文件
+  |           |-- background.js        // background 脚本入口文件
   |       |-- content                  // content 脚本文件集
-  |           |-- App.js               // 被注入的 content 脚本入口文件
-  |           |-- inject               // content 的注入脚本 + 通信脚本（该文件不做编译）
+  |           |-- content.js           // 被注入的 content 脚本入口文件
   |       |-- popup                    // popup 脚本文件集
-  |           |-- App.js               // popup 脚本入口文件
+  |           |-- popup.js             // popup 脚本入口文件
   |   |-- pages                        // 测试环境变量
-  |       |-- background.html          // background.html
   |       |-- popup.html               // popup.html
-  |   |-- manifest.json                // 测试环境变量
+  |   |-- manifest.json                // chrome 配置文件
   |-- .eslintignore                    // 忽略 eslint 检查的目录
   |-- .eslintrc.json                   // eslint 规则配置
   |-- .editorconfig                    // 定义代码格式
@@ -45,10 +43,8 @@ npm build
 
 1. 注意：
 
-  由于 manifest.json 中的脚本配置不能使用远程 url，只能使用本地的相对地址，所以我们 background + popup 可以使用 html 作为中间层来加载开发模式下的 webpack 的远程 url 进行开发。
-
-  但对于 content 我们则使用一个中间注入脚本 inject.js 作为中间层来帮助我们实现两个功能：动态生成 script 标签完成页面脚本的注入，以及与 background.js 的数据通信。
+  由于 manifest.json 中的脚本配置不能使用远程 url，只能使用本地的相对地址，所以我们 popup 可以使用 html 作为中间层来加载开发模式下的 webpack 的远程 url 进行开发。
 
 2. 建议：
 
-  popup、background、content(inject)之间的通信建议以 background 作为中间传递层，防止维护混乱问题。
+	popup、background、content(inject)之间的通信建议以 background 作为中间传递层，防止维护混乱问题。
