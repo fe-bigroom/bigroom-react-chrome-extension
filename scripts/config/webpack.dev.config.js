@@ -1,5 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const WriteFilePlugin = require('write-file-webpack-plugin');
 
@@ -20,9 +20,9 @@ module.exports = webpackMerge(baseWebpackConfig, {
   plugins: [
     new WriteFilePlugin({
       test: /(background\.js|vendor\.js|content\.js|manifest\.json)$/,
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    })
+    // new webpack.optimize.OccurrenceOrderPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin()
   ]
 })
