@@ -44,7 +44,15 @@ module.exports = {
       },
 
       {
-        test: /\.(less|css)$/,
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+
+      {
+        test: /\.less$/,
         use: [
           'style-loader',
           'css-loader',
