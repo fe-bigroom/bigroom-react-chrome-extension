@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const entries = require('./utils/entrys')
+const entries = require('./utils/entries')
 const config = require('./index')
 
 const resolve = function (dir) {
