@@ -24,6 +24,7 @@ const backgroundjs = {
   listenContent({ action, data }, sender, response) { // eslint-disable-line
     switch (action) {
       case 'init': initContent(); break;
+      case 'compiled': chrome.runtime.reload(); break;
       default: break;
     }
   },

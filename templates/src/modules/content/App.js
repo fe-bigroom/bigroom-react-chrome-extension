@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="chrome-content-container">
-        react chrome extensions
+        chrome extensions with reactjs
       </div>
     );
   }

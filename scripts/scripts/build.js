@@ -4,6 +4,8 @@ const rm = require('rimraf')
 const chalk = require('chalk')
 const webpack = require('webpack')
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+
 const taskRun = require('./task')
 const webpackConfig = require('../config/webpack.prod.config')
 
