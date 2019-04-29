@@ -58,7 +58,12 @@ module.exports = {
           'css-loader',
           'less-loader'
         ]
+      },
+      {
+	 test: /\.(jpg|png|gif)/,
+	 use: ['url-loader']
       }
+     
     ]
   },
   plugins: [
